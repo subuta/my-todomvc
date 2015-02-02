@@ -15,6 +15,9 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  // load Slim Task
+  grunt.loadNpmTasks('grunt-slim');
+
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
@@ -40,6 +43,13 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         }
       },
+      slim: {
+          files: [
+              '<%= yeoman.app %>/views{,*/}*.slim',
+              '<%= yeoman.app %>/index.slim'
+          ],
+          tasks: "slim:dist"
+      },
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
@@ -56,11 +66,23 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
+          '<%= yeoman.app %>/{,*/}*.slim',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
+    },
+
+    // for slim
+    slim: {
+        dist: {
+            files: [{
+                expand: true,
+                src: ['<%= yeoman.app %>/{,*/}*.slim'],
+                dest: './',
+                ext: '.html'
+            }]
+        }
     },
 
     // The actual grunt server settings
@@ -366,13 +388,15 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'compass:server'
+        'compass:server',
+        'slim:dist'
       ],
       test: [
         'compass'
       ],
       dist: [
         'compass:dist',
+        'slim:dist',
         'imagemin',
         'svgmin'
       ]

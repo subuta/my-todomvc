@@ -1,17 +1,17 @@
 'use strict';
 
-/**
+###
  * @ngdoc function
- * @name todomvcApp.controller:AboutCtrl
+ * @name todomvcApp.controller:MainCtrl
  * @description
- * # AboutCtrl
+ * # MainCtrl
  * Controller of the todomvcApp
- */
+###
 angular.module('todomvcApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('MainCtrl', ($scope) ->
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+  );
