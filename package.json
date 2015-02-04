@@ -34,6 +34,7 @@
     "karma-jasmine": "^0.3.5",
     "karma-phantomjs-launcher": "^0.1.4",
     "load-grunt-tasks": "^0.4.0",
+    "nodemon": "^1.3.6",
     "postcss": "^4.0.3",
     "time-grunt": "^0.3.1"
   },
@@ -41,6 +42,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "casperjs test test/tests/*.js --pre=test/helper/pre.js --includes=test/helper/inc.js --post=test/helper/post.js"
+    "test": "casperjs test test/tests/*.js --pre=test/helper/pre.js --includes=test/helper/inc.js --post=test/helper/post.js",
+    "test-watch": "nodemon --watch test/tests/*.js --exec \"casperjs test test/tests/*.js --pre=test/helper/pre.js --includes=test/helper/inc.js --post=test/helper/post.js --direct\""
   }
 }

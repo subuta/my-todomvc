@@ -2,6 +2,10 @@
 (function() {
   casper.echo("-- E2Eテスト(CasperJS)[開始] --");
 
+  casper.global = {};
+
+  casper.global.targetUrl = 'http://localhost:9000/';
+
   casper.test.done();
 
 }).call(this);

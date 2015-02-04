@@ -2,6 +2,8 @@
 (function() {
   casper.echo("-- E2Eテスト(CasperJS)[終了] --");
 
+  casper.global = {};
+
   casper.test.done();
 
 }).call(this);
