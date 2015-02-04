@@ -1,4 +1,7 @@
 casper.test.begin("Google's page testing!", 5, (test) ->
+
+  casper.sayHi();
+
   casper.start("http://www.google.com/", () ->
     test.assertTitle("Google", "google homepage title is the one expected");
     test.assertExists('form[action="/search"]', "main form is found");

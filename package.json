@@ -41,6 +41,6 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "casperjs test ./test/todoTest.js"
+    "test": "casperjs test test/tests/*.js --pre=test/helper/pre.js --includes=test/helper/inc.js --post=test/helper/post.js"
   }
 }
