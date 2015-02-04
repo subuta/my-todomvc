@@ -3,6 +3,7 @@ $icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bo
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+// レガシーブラウザ向けの表示
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -10,11 +11,34 @@ $icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bo
   padding: 0.2em 0;
 }
 
-/* Space out content a bit */
+// html要素
+html {
+  // 相対指定するための、高さ指定
+  height: 100%;
+}
+
+// body要素
 body {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: #EAEAEA;
+  background-color: #EAEAEA !important;
+  // 相対指定するための、高さ指定
+  height: 100%;
+  width: 100%;
+}
+
+// 全体の要素のコンテナ
+.container {
+  // 相対指定するための、高さ指定
+  height: 100%;
+  width: 100%;
+}
+
+// ngView要素のコンテナ
+.ng-view-container {
+  // 相対指定するための、高さ指定
+  height: 100%;
+  width: 100%;
 }
 
 // ヘッダー部分のタイトル表示(todos)
@@ -23,58 +47,4 @@ body {
   font-size: 60px;
   color: #BEBEBE;
   text-shadow: #EFEFEF 1px 1px 0px, #EFEFEF -1px 1px 0px, #EFEFEF 1px -1px 0px, #EFEFEF -1px -1px 0px
-}
-
-// フッター部分
-.footer {
-  text-align: center;
-  color: #969696;
-  line-height: 30px;
-}
-
-// TODOのフォーム
-div.todo-form {
-  background-color: white;
-  width: 50%;
-  height: 80px;
-  margin: 25px auto 30px auto;
-  box-shadow: 5px 12px 55px 9px rgba(0, 0, 0, 0.2);
-
-  // TODOのフォーム上部のバー表示
-  div.todo-form-topbar {
-    height: 20px;
-    background-color: #614545;
-    position: relative;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-    opacity: 0.7;
-    z-index: 100;
-  }
-
-  // TODOのフォーム左部のバー表示
-  div.todo-form-leftbar {
-    border-left: 1px solid red;
-    border-right: 1px solid red;
-    margin-left: 30px;
-    position: absolute;
-    height: 80px;
-    width: 4px;
-    opacity: 0.2;
-    z-index: 99;
-  }
-
-  // フォーム入力
-  input.todo-form-input {
-    margin: 10px 0 0 45px;
-    border: none;
-    height: 38px;
-    color: #6F6F6F;
-    font-size: 25px;
-    width: 85%;
-    outline: 0;
-  }
-
-  // フォーム入力が空の場合
-  input.todo-form-input.is-blank {
-    font-style: italic;
-  }
 }

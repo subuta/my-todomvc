@@ -8,16 +8,9 @@
    * @description
    * # todomvcApp
    *
-   * Main module of the application.
+   * TodoMVCAppで利用するモジュールの設定
    */
-  angular.module('todomvcApp', ['ngAnimate', 'ngCookies', 'ngMessages', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch']).config(function($routeProvider) {
-    return $routeProvider.when('/', {
-      templateUrl: 'views/main.html',
-      controller: 'MainCtrl'
-    }).otherwise({
-      redirectTo: '/'
-    });
-  });
+  angular.module('todomvcApp', ['ngAnimate', 'ngCookies', 'ngMessages', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch']);
 
 }).call(this);
 

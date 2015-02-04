@@ -6,7 +6,7 @@
  * @description
  * # todomvcApp
  *
- * Main module of the application.
+ * TodoMVCAppで利用するモジュールの設定
 ###
 
 angular.module('todomvcApp', [
@@ -17,14 +17,4 @@ angular.module('todomvcApp', [
     'ngRoute',
     'ngSanitize',
     'ngTouch'
-  ])
-.config( ($routeProvider) ->
-  $routeProvider
-    .when('/', {
-      templateUrl: 'views/main.html',
-      controller: 'MainCtrl'
-    })
-    .otherwise({
-        redirectTo: '/'
-      });
-);
+])

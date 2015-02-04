@@ -10,8 +10,9 @@ html class="no-js"
     /! bower:css
     /! endbower
     /! endbuild
-    /! build:css(.tmp) styles/main.css
+    /! build:css(.tmp) styles/todo.css
     link rel="stylesheet" href="styles/main.css"
+    link rel="stylesheet" href="styles/todo.css"
     /! endbuild
   body ng-app="todomvcApp"
     /! [if lt IE 7]
@@ -27,14 +28,7 @@ html class="no-js"
       div class="header"
         h3 class="text-muted header-title" todos
 
-      div ng-view=""
-
-      div class="footer"
-        p
-          small
-            | Double-click to edit a todo - Escape to cancel <br>
-            | Written by Shunta Saito <br>
-            | Part of AngularJS Framework
+      div ng-view="" class="ng-view-container"
 
     /! build:js(.) scripts/oldieshim.js
     /! [if lt IE 9]
@@ -47,6 +41,8 @@ html class="no-js"
     /! bower:js
 
     script src="bower_components/jquery/dist/jquery.js"
+    script src="bower_components/underscore/underscore-min.js"
+    script src="bower_components/underscore.string/dist/underscore.string.min.js"
     script src="bower_components/angular/angular.js"
     script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"
     script src="bower_components/angular-animate/angular-animate.js"
@@ -63,6 +59,10 @@ html class="no-js"
     /! build:js({.tmp,app}) scripts/scripts.js
 
     script src="scripts/app.js"
-    script src="scripts/controllers/main.js"
+    script src="scripts/config/route.js"
+    script src="scripts/config/run.js"
+    script src="scripts/services/todoService.js"
+    script src="scripts/directives/ssTodoList.js"
+    script src="scripts/controllers/todoCtrl.js"
 
     /! endbuild
