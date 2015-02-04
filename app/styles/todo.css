@@ -82,7 +82,7 @@ div.todo-form {
       outline: 0; }
     div.todo-form div.todo-list-item input.todo-form-input {
       margin: -43px 0 0 42px;
-      width: 48%;
+      width: 44%;
       position: absolute;
       border-radius: 5px;
       border: 2px solid transparent; }

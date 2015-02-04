@@ -6,6 +6,8 @@
 
   casper.global.targetUrl = 'http://localhost:9000/';
 
+  casper.global.evidenceFolder = './test/evidence';
+
   casper.test.done();
 
 }).call(this);

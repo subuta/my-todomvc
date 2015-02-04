@@ -21,14 +21,17 @@ angular.module('todomvcApp')
   # Todo追加のフォーム
   .directive('ssTodoListInput', ->
     template: '''
-    <div class="todo-form-leftbar"></div>
-    <div class="todo-form-topbar"></div>
-    <image src="images/down-arrow.png" class="todo-form-down-arrow" ng-class="{'is-completed': isAllCompleted()}" ng-click="toggleAllCompleted()" ng-show="todos.length > 0"></image>
-    <input class="todo-form-input" placeholder="What needs to be done?" ng-class="{'is-blank': isBlank(task),'left-spaced': todos.length == 0}" ng-keyup="onKeyPress($event.keyCode)" ng-model="task" />
+    <div class="todo-form-input-wrapper">
+      <div class="todo-form-leftbar"></div>
+      <div class="todo-form-topbar"></div>
+      <image src="images/down-arrow.png" class="todo-form-down-arrow" ng-class="{'is-completed': isAllCompleted()}" ng-click="toggleAllCompleted()" ng-show="todos.length > 0"></image>
+      <input class="todo-form-input" placeholder="What needs to be done?" ng-class="{'is-blank': isBlank(task),'left-spaced': todos.length == 0}" ng-keyup="onKeyPress($event.keyCode)" ng-model="task" />
+    </div>
     ''',
     scope: {
       todos: '='
     },
+    replace: false,
     controller: ($scope, todoService) ->
       # taskを初期化
       $scope.task = ""
@@ -67,7 +70,7 @@ angular.module('todomvcApp')
       <div ng-switch="todo.editable">
         <div ng-switch-when="true">
           <div class="todo-list-task"  ng-class="{'is-completed': todo.isCompleted}" ng-bind=""></div>
-          <input class="todo-form-input" ng-keyup="onKeyPress($event.keyCode, todo)" ng-model="todo.task" />
+          <input class="todo-form-input" ng-keyup="sonKeyPress($event.keyCode, todo)" ng-model="todo.task" />
         </div>
         <div ng-switch-when="false">
           <div class="todo-list-task"  ng-class="{'is-completed': todo.isCompleted}" ng-bind="todo.task" ng-dblclick="todo.edit()"></div>
@@ -79,6 +82,7 @@ angular.module('todomvcApp')
       todosFilter: '=',
       todos: '='
     },
+    replace: false,
     controller: ($scope, todoService) ->
       # Todoを削除するメソッド
       $scope.removeTodo = (todo) ->
@@ -104,7 +108,7 @@ angular.module('todomvcApp')
         return filter
 
       # キーボードが押下された場合のハンドラ
-      $scope.onKeyPress = (keyCode, todo) ->
+      $scope.sonKeyPress = (keyCode, todo) ->
         if keyCode and todo
           switch keyCode
             when 13
@@ -134,7 +138,8 @@ angular.module('todomvcApp')
     scope: {
       todosFilter: '=',
       todos: '='
-    }
+    },
+    replace: false,
     controller: ($scope, todoService) ->
       # VMからtodoService内のプロパティ/関数を参照できるようにする。
       $scope.getCompleted = todoService.getCompleted
@@ -161,4 +166,5 @@ angular.module('todomvcApp')
     '''
     restrict: 'E',
     scope: true,
+    replace: true
   )
