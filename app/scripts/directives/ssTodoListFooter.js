@@ -2,7 +2,7 @@
 (function() {
   angular.module('todomvcApp').directive('ssTodoListFooter', function() {
     return {
-      template: '<div class="todo-form-footer-wrapper">\n  <div class="todo-form-footer">\n    <span class="footer-left"><b>{{getNotCompleted().length}}</b> items left</span>\n    <span class="footer-right">\n      <button class="btn-small" ng-click="clearCompleted()" ng-show="getCompleted().length > 0">Clear completed ({{getCompleted().length}})</button>\n    </span>\n    <div class="todo-form-filters">\n      <span ng-click="todosFilter = \'\'" ng-class="{\'is-selected\': todosFilter === \'\'}" id="todo-form-filter-all">All</span>\n      <span ng-click="todosFilter = \'notCompleted\'" ng-class="{\'is-selected\': todosFilter === \'notCompleted\'}" id="todo-form-filter-active">Active</span>\n      <span ng-click="todosFilter = \'completed\'" ng-class="{\'is-selected\': todosFilter === \'completed\'}" id="todo-form-filter-completed">Completed</span>\n    </div>\n  </div>\n</div>',
+      templateUrl: 'views/directives/ssTodoListFooter.html',
       scope: {
         todosFilter: '=',
         todos: '='

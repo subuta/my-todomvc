@@ -1,14 +1,7 @@
 angular.module('todomvcApp')
 # Todo追加のフォーム
 .directive('ssTodoListInput', ->
-  template: '''
-    <div class="todo-form-input-wrapper">
-      <div class="todo-form-leftbar"></div>
-      <div class="todo-form-topbar"></div>
-      <image src="images/down-arrow.png" class="todo-form-down-arrow" ng-class="{'is-completed': isAllCompleted()}" ng-click="toggleAllCompleted()" ng-show="todos.length > 0"></image>
-      <input class="todo-form-input" placeholder="What needs to be done?" ng-class="{'is-blank': isBlank(task),'left-spaced': todos.length == 0}" ng-keyup="onKeyPress($event.keyCode)" ng-model="task" />
-    </div>
-    ''',
+  templateUrl: 'views/directives/ssTodoListInput.html'
   scope: {
     todos: '='
   },

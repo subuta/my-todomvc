@@ -20,15 +20,7 @@ angular.module('todomvcApp')
   )
   # TodoListの要素
   .directive('ssTodoList', ->
-    template: '''
-    <div class="todo-form-wrapper" ng-controller="todoListCtrl as vm">
-      <div class="todo-form">
-        <ss-todo-list-input todos="vm.todos"></ss-todo-list-input>
-        <ss-todo-list-item todos-filter="vm.todosFilter" todos="vm.todos"></ss-todo-list-item>
-        <ss-todo-list-footer todos-filter="vm.todosFilter" todos="vm.todos"></ss-todo-list-footer>
-      </div>
-    </div>
-    '''
+    templateUrl: 'views/directives/ssTodoList.html'
     restrict: 'E',
     scope: true,
     replace: true

@@ -1,21 +1,7 @@
 angular.module('todomvcApp')
 # TodoListのフッター要素
 .directive('ssTodoListFooter', ->
-  template: '''
-      <div class="todo-form-footer-wrapper">
-        <div class="todo-form-footer">
-          <span class="footer-left"><b>{{getNotCompleted().length}}</b> items left</span>
-          <span class="footer-right">
-            <button class="btn-small" ng-click="clearCompleted()" ng-show="getCompleted().length > 0">Clear completed ({{getCompleted().length}})</button>
-          </span>
-          <div class="todo-form-filters">
-            <span ng-click="todosFilter = ''" ng-class="{'is-selected': todosFilter === ''}" id="todo-form-filter-all">All</span>
-            <span ng-click="todosFilter = 'notCompleted'" ng-class="{'is-selected': todosFilter === 'notCompleted'}" id="todo-form-filter-active">Active</span>
-            <span ng-click="todosFilter = 'completed'" ng-class="{'is-selected': todosFilter === 'completed'}" id="todo-form-filter-completed">Completed</span>
-          </div>
-        </div>
-      </div>
-    ''',
+  templateUrl: 'views/directives/ssTodoListFooter.html'
   scope: {
     todosFilter: '=',
     todos: '='

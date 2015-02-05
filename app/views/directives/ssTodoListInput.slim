@@ -1,0 +1,5 @@
+.todo-form-input-wrapper
+  .todo-form-leftbar
+  .todo-form-topbar
+  image.todo-form-down-arrow ng-class=("{'is-completed': isAllCompleted()}") ng-click="toggleAllCompleted()" ng-show=("todos.length > 0") src="images/down-arrow.png"
+  input.todo-form-input ng-class="{'is-blank': isBlank(task),'left-spaced': todos.length == 0}" ng-keyup="onKeyPress($event.keyCode)" ng-model="task" placeholder=("What needs to be done?")

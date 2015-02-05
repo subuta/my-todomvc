@@ -2,7 +2,7 @@
 (function() {
   angular.module('todomvcApp').directive('ssTodoListItem', function() {
     return {
-      template: '<div class="todo-list-item" ng-mouseover="hoverIn(todo)" ng-mouseleave="hoverOut(todo)" ng-repeat="todo in todos | filter:getFilter()">\n  <span class="todo-form-check" ng-class="{\'is-completed\': todo.isCompleted}" ng-click="todo.toggleCompleted()">✓</span>\n  <div class="todo-form-leftbar-short"></div>\n  <span class="todo-form-remove pull-right" ng-click="removeTodo(todo)" ng-show="todo.hover">×</span>\n  <div ng-switch="todo.editable">\n    <div ng-switch-when="true">\n      <div class="todo-list-task"  ng-class="{\'is-completed\': todo.isCompleted}" ng-bind=""></div>\n      <input class="todo-form-input" ng-keyup="onKeyPress($event.keyCode, todo)" ng-model="todo.task" />\n    </div>\n    <div ng-switch-when="false">\n      <div class="todo-list-task"  ng-class="{\'is-completed\': todo.isCompleted}" ng-bind="todo.task" ng-dblclick="todo.edit()"></div>\n    </div>\n  </div>\n</div>',
+      templateUrl: 'views/directives/ssTodoListItem.html',
       scope: {
         todosFilter: '=',
         todos: '='

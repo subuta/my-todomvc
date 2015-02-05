@@ -15,7 +15,7 @@
     return vm.todos = todoService.todos;
   }).directive('ssTodoList', function() {
     return {
-      template: '<div class="todo-form-wrapper" ng-controller="todoListCtrl as vm">\n  <div class="todo-form">\n    <ss-todo-list-input todos="vm.todos"></ss-todo-list-input>\n    <ss-todo-list-item todos-filter="vm.todosFilter" todos="vm.todos"></ss-todo-list-item>\n    <ss-todo-list-footer todos-filter="vm.todosFilter" todos="vm.todos"></ss-todo-list-footer>\n  </div>\n</div>',
+      templateUrl: 'views/directives/ssTodoList.html',
       restrict: 'E',
       scope: true,
       replace: true
