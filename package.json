@@ -45,5 +45,9 @@
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "casperjs test test/tests/*.coffee --pre=test/helper/pre.coffee --includes=test/helper/inc.coffee --post=test/helper/post.coffee",
+    "test-watch": "nodemon --watch test/tests --watch app/scripts --watch app/views -e coffee,html --exec \"casperjs test test/tests/*.coffee --pre=test/helper/pre.coffee --includes=test/helper/inc.coffee --post=test/helper/post.coffee --verbose\""
   }
 }
