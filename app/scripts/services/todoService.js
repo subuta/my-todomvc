@@ -9,45 +9,8 @@
     * # todoService
     * Singletonなtodo機能のインスタンスを提供するFactoryです。
    */
-  angular.module('todomvcApp').factory('todoService', function($filter) {
-    var Todo, todoService;
-    Todo = (function() {
-      function Todo(_at_task, _at_isCompleted, _at_editable) {
-        this.task = _at_task != null ? _at_task : "";
-        this.isCompleted = _at_isCompleted != null ? _at_isCompleted : false;
-        this.editable = _at_editable != null ? _at_editable : false;
-      }
-
-      Todo.prototype.setTask = function(task) {
-        return this.task = task;
-      };
-
-      Todo.prototype.setCompleted = function(isCompleted) {
-        return this.isCompleted = isCompleted;
-      };
-
-      Todo.prototype.toggleCompleted = function() {
-        return this.isCompleted = !this.isCompleted;
-      };
-
-      Todo.prototype.edit = function() {
-        this.editable = true;
-        return this.tempTask = this.task;
-      };
-
-      Todo.prototype.endEdit = function(isCancel) {
-        if (isCancel == null) {
-          isCancel = false;
-        }
-        this.editable = false;
-        if (isCancel) {
-          return this.task = this.tempTask;
-        }
-      };
-
-      return Todo;
-
-    })();
+  angular.module('todomvcApp').factory('todoService', function($filter, Todo) {
+    var todoService;
     todoService = {
       todos: [],
       addTodo: function(task) {
