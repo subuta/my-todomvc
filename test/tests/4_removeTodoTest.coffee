@@ -8,7 +8,7 @@ casper.test.begin("TODOの削除テスト", 8, (test) ->
     @addTodo('Go to buy a iMac')
 
     @waitForSelector('.todo-list-item .todo-list-task', () ->
-      test.assertVisible('.todo-form-down-arrow', '矢印マークが表示されていること')
+      test.assertVisible('.todo-form-toggle-complete', '矢印マークが表示されていること')
       test.assertExists('.todo-list-item .todo-form-check', 'チェックマークが表示されていること')
       test.assertElementCount('.todo-list-item', 1,'ひとつのTODOタスクが表示されていること')
       test.assertSelectorHasText('.todo-list-item .todo-list-task', 'Go to buy a iMac','TODOタスクの中身が表示されていること')

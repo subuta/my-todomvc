@@ -14,3 +14,6 @@ angular.module('todomvcApp')
 
   )
 
+# グローバル変数に存在するライブラリをAngularJSのモジュールとして取り込む
+angular.module('todomvcApp').constant('_', _)
+angular.module('todomvcApp').constant('s', s)

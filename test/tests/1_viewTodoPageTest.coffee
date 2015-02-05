@@ -8,7 +8,7 @@ casper.test.begin("TODOページの表示テスト", 6, (test) ->
     test.assertSelectorHasText('.todo-form-footer .footer-left', '0 items left', 'アイテム数の表示が0となっていること')
     test.assertSelectorHasText('#todo-form-filter-all.is-selected', 'All', 'Allフィルタが選択されていること')
     test.assertSelectorHasText('.footer', 'Double-click to edit a todo - Escape to cancel', 'キーボード操作のメッセージが表示されていること')
-    test.assertNotVisible('.todo-form-down-arrow', '矢印マークが表示されていないこと')
+    test.assertNotVisible('.todo-form-toggle-complete', '矢印マークが表示されていないこと')
   )
 
   casper.run(() ->

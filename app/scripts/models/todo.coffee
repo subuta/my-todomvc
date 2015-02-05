@@ -1,28 +1,46 @@
-# Todo向けのクラス
-class Todo
-  constructor: (@task = "", @isCompleted = false, @editable = false) ->
+angular.module('todomvcApp').factory('Todo', (Base) ->
+  # Todo向けのクラス
+  class Todo extends Base
 
-    # 自身のtaskプロパティのセッター
-  setTask: (task) ->
-    @task = task
+    @id : 1
+    @url: 'http://localhost:3000/api/todo'
+    @todos: [
+#      new Todo('スーパーに行く')
+#      new Todo('TSUTAYAに行く')
+#      new Todo('デパートに行く')
+    ]
 
-  # completedをセットする。
-  setCompleted: (isCompleted) ->
-    @isCompleted = isCompleted
+    constructor: (@taskName = "", @isCompleted = false, @id = null, @editable = false) ->
+      super()
 
-  # completedをトグルする。
-  toggleCompleted: () ->
-    @isCompleted = !@isCompleted
+    create: ->
+      @_setAndIncrementId()
+      Todo.todos.push(Todo.parse(@))
 
-  # Todoを編集状態にする。
-  edit: ->
-    @editable = true
-    @tempTask = @task
+    update: ->
+    delete: ->
+      Todo.todos = _.reject Todo.todos, (todo) =>
+        todo.id == @id
 
-  # Todoの編集状態を終了する。
-  endEdit: (isCancel = false) ->
-    @editable = false
-    @task = @tempTask if (isCancel)
+    toObj: () ->
+      obj = {
+        taskName: @taskName
+        isCompleted: @isCompleted
+      }
+      return obj
 
+    _setAndIncrementId: ->
+      @id = Todo.id
+      Todo.id++
 
-angular.module('todomvcApp').constant('Todo', Todo)
+    @gets: () ->
+      return Todo.todos
+
+    @get: (id) ->
+      return Todo.todos[id]
+
+    @parse: (obj) ->
+      return new Todo(obj.taskName, obj.isCompleted, obj.id)
+
+  return Todo
+)

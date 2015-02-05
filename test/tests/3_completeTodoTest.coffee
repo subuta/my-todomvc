@@ -23,7 +23,7 @@ casper.test.begin("TODOの完了表示テスト", 8, (test) ->
 
   casper.then( () ->
     test.info("矢印マークをクリックしたら")
-    @mouse.click('.todo-form-down-arrow')
+    @mouse.click('.todo-form-toggle-complete')
 
     @waitForSelector('.todo-list-item .todo-form-check', () ->
       test.assertExists('.todo-list-item .todo-form-check', 'チェックマークが表示されていること')

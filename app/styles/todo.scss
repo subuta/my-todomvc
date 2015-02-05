@@ -56,13 +56,13 @@ div.todo-form {
   }
 
   // フォーム入力の下矢印アイコン
-  img.todo-form-down-arrow {
+  img.todo-form-toggle-complete {
     margin: -10px 0 0 1px;
     opacity: 0.5;
   }
 
   // フォーム入力の下矢印アイコン(全TODO完了時の表示)
-  img.todo-form-down-arrow.is-completed {
+  img.todo-form-toggle-complete.is-completed {
     opacity: 1;
   }
 
