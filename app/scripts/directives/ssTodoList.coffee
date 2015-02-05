@@ -70,7 +70,7 @@ angular.module('todomvcApp')
       <div ng-switch="todo.editable">
         <div ng-switch-when="true">
           <div class="todo-list-task"  ng-class="{'is-completed': todo.isCompleted}" ng-bind=""></div>
-          <input class="todo-form-input" ng-keyup="sonKeyPress($event.keyCode, todo)" ng-model="todo.task" />
+          <input class="todo-form-input" ng-keyup="onKeyPress($event.keyCode, todo)" ng-model="todo.task" />
         </div>
         <div ng-switch-when="false">
           <div class="todo-list-task"  ng-class="{'is-completed': todo.isCompleted}" ng-bind="todo.task" ng-dblclick="todo.edit()"></div>
@@ -108,7 +108,7 @@ angular.module('todomvcApp')
         return filter
 
       # キーボードが押下された場合のハンドラ
-      $scope.sonKeyPress = (keyCode, todo) ->
+      $scope.onKeyPress = (keyCode, todo) ->
         if keyCode and todo
           switch keyCode
             when 13
@@ -128,9 +128,9 @@ angular.module('todomvcApp')
             <button class="btn-small" ng-click="clearCompleted()" ng-show="getCompleted().length > 0">Clear completed ({{getCompleted().length}})</button>
           </span>
           <div class="todo-form-filters">
-            <span ng-click="todosFilter = ''" ng-class="{'is-selected': todosFilter === ''}">All</span>
-            <span ng-click="todosFilter = 'notCompleted'" ng-class="{'is-selected': todosFilter === 'notCompleted'}">Active</span>
-            <span ng-click="todosFilter = 'completed'" ng-class="{'is-selected': todosFilter === 'completed'}">Completed</span>
+            <span ng-click="todosFilter = ''" ng-class="{'is-selected': todosFilter === ''}" id="todo-form-filter-all">All</span>
+            <span ng-click="todosFilter = 'notCompleted'" ng-class="{'is-selected': todosFilter === 'notCompleted'}" id="todo-form-filter-active">Active</span>
+            <span ng-click="todosFilter = 'completed'" ng-class="{'is-selected': todosFilter === 'completed'}" id="todo-form-filter-completed">Completed</span>
           </div>
         </div>
       </div>

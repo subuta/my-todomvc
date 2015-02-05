@@ -48,7 +48,7 @@
     };
   }).directive('ssTodoListItem', function() {
     return {
-      template: '<div class="todo-list-item" ng-mouseover="hoverIn(todo)" ng-mouseleave="hoverOut(todo)" ng-repeat="todo in todos | filter:getFilter()">\n  <span class="todo-form-check" ng-class="{\'is-completed\': todo.isCompleted}" ng-click="todo.toggleCompleted()">✓</span>\n  <div class="todo-form-leftbar-short"></div>\n  <span class="todo-form-remove pull-right" ng-click="removeTodo(todo)" ng-show="todo.hover">×</span>\n  <div ng-switch="todo.editable">\n    <div ng-switch-when="true">\n      <div class="todo-list-task"  ng-class="{\'is-completed\': todo.isCompleted}" ng-bind=""></div>\n      <input class="todo-form-input" ng-keyup="sonKeyPress($event.keyCode, todo)" ng-model="todo.task" />\n    </div>\n    <div ng-switch-when="false">\n      <div class="todo-list-task"  ng-class="{\'is-completed\': todo.isCompleted}" ng-bind="todo.task" ng-dblclick="todo.edit()"></div>\n    </div>\n  </div>\n</div>',
+      template: '<div class="todo-list-item" ng-mouseover="hoverIn(todo)" ng-mouseleave="hoverOut(todo)" ng-repeat="todo in todos | filter:getFilter()">\n  <span class="todo-form-check" ng-class="{\'is-completed\': todo.isCompleted}" ng-click="todo.toggleCompleted()">✓</span>\n  <div class="todo-form-leftbar-short"></div>\n  <span class="todo-form-remove pull-right" ng-click="removeTodo(todo)" ng-show="todo.hover">×</span>\n  <div ng-switch="todo.editable">\n    <div ng-switch-when="true">\n      <div class="todo-list-task"  ng-class="{\'is-completed\': todo.isCompleted}" ng-bind=""></div>\n      <input class="todo-form-input" ng-keyup="onKeyPress($event.keyCode, todo)" ng-model="todo.task" />\n    </div>\n    <div ng-switch-when="false">\n      <div class="todo-list-task"  ng-class="{\'is-completed\': todo.isCompleted}" ng-bind="todo.task" ng-dblclick="todo.edit()"></div>\n    </div>\n  </div>\n</div>',
       scope: {
         todosFilter: '=',
         todos: '='
@@ -81,7 +81,7 @@
           }
           return filter;
         };
-        return $scope.sonKeyPress = function(keyCode, todo) {
+        return $scope.onKeyPress = function(keyCode, todo) {
           if (keyCode && todo) {
             switch (keyCode) {
               case 13:
@@ -96,7 +96,7 @@
     };
   }).directive('ssTodoListFooter', function() {
     return {
-      template: '<div class="todo-form-footer-wrapper">\n  <div class="todo-form-footer">\n    <span class="footer-left"><b>{{getNotCompleted().length}}</b> items left</span>\n    <span class="footer-right">\n      <button class="btn-small" ng-click="clearCompleted()" ng-show="getCompleted().length > 0">Clear completed ({{getCompleted().length}})</button>\n    </span>\n    <div class="todo-form-filters">\n      <span ng-click="todosFilter = \'\'" ng-class="{\'is-selected\': todosFilter === \'\'}">All</span>\n      <span ng-click="todosFilter = \'notCompleted\'" ng-class="{\'is-selected\': todosFilter === \'notCompleted\'}">Active</span>\n      <span ng-click="todosFilter = \'completed\'" ng-class="{\'is-selected\': todosFilter === \'completed\'}">Completed</span>\n    </div>\n  </div>\n</div>',
+      template: '<div class="todo-form-footer-wrapper">\n  <div class="todo-form-footer">\n    <span class="footer-left"><b>{{getNotCompleted().length}}</b> items left</span>\n    <span class="footer-right">\n      <button class="btn-small" ng-click="clearCompleted()" ng-show="getCompleted().length > 0">Clear completed ({{getCompleted().length}})</button>\n    </span>\n    <div class="todo-form-filters">\n      <span ng-click="todosFilter = \'\'" ng-class="{\'is-selected\': todosFilter === \'\'}" id="todo-form-filter-all">All</span>\n      <span ng-click="todosFilter = \'notCompleted\'" ng-class="{\'is-selected\': todosFilter === \'notCompleted\'}" id="todo-form-filter-active">Active</span>\n      <span ng-click="todosFilter = \'completed\'" ng-class="{\'is-selected\': todosFilter === \'completed\'}" id="todo-form-filter-completed">Completed</span>\n    </div>\n  </div>\n</div>',
       scope: {
         todosFilter: '=',
         todos: '='
