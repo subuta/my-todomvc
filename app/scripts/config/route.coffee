@@ -13,7 +13,7 @@ angular.module('todomvcApp')
   .config( ($routeProvider) ->
     $routeProvider
       .when('/angular-todo', {
-        templateUrl: 'views/todo.html'
+        templateUrl: '../../views/todo.html'
       })
       .otherwise({
           redirectTo: '/angular-todo'

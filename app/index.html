@@ -1,6 +1,76 @@
-<!DOCTYPE html><html class="no-js"><head><meta charset="utf-8" /><title>TodoMVC</title><meta content="" name="description" /><meta content="width=device-width" name="viewport" /><!--Place favicon.ico and apple-touch-icon.png in the root directory--><!--build:css(.) styles/vendor.css--><!--bower:css--><!--endbower--><!--endbuild--><!--build:css(.tmp) styles/todo.css--><link href="styles/main.css" rel="stylesheet" /><link href="styles/todo.css" rel="stylesheet" /><!--endbuild--></head><body ng-app="todomvcApp"><!--[if lt IE 7]
-p class="browsehappy" You are using an
-  strong outdated browser.
-  | Please
-  a href="http://browsehappy.com/" upgrade your browser
-  | to improve your experience.--><!--[endif]--><!--Add your site or application content here--><div class="container"><div class="header"><h3 class="text-muted header-title">todos</h3></div><div class="ng-view-container" ng-view=""></div></div><!--build:js(.) scripts/oldieshim.js--><!--[if lt IE 9]--><script src="bower_components/es5-shim/es5-shim.js"></script><script src="bower_components/json3/lib/json3.js"></script><!--[endif]--><!--endbuild--><!--build:js(.) scripts/vendor.js--><!--bower:js--><script src="bower_components/jquery/dist/jquery.js"></script><script src="bower_components/underscore/underscore-min.js"></script><script src="bower_components/underscore.string/dist/underscore.string.min.js"></script><script src="bower_components/angular/angular.js"></script><script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script><script src="bower_components/angular-animate/angular-animate.js"></script><script src="bower_components/angular-cookies/angular-cookies.js"></script><script src="bower_components/angular-messages/angular-messages.js"></script><script src="bower_components/angular-resource/angular-resource.js"></script><script src="bower_components/angular-route/angular-route.js"></script><script src="bower_components/angular-sanitize/angular-sanitize.js"></script><script src="bower_components/angular-touch/angular-touch.js"></script><!--endbower--><!--endbuild--><!--build:js({.tmp,app}) scripts/scripts.js--><script src="scripts/app.js"></script><script src="scripts/config/route.js"></script><script src="scripts/config/run.js"></script><script src="scripts/models/todo.js"></script><script src="scripts/services/todoService.js"></script><script src="scripts/directives/ssTodoListInput.js"></script><script src="scripts/directives/ssTodoListItem.js"></script><script src="scripts/directives/ssTodoListFooter.js"></script><script src="scripts/directives/ssTodoList.js"></script><script src="scripts/controllers/todoCtrl.js"></script><!--endbuild--></body></html>
+<!doctype html>
+<html class="no-js" ng-app="todomvcApp">
+  <head>
+    <meta charset="utf-8">
+    <title>myTodoMvc</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp/serve,app}) styles/vendor.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/todo.css">
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,app}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automaticaly insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="todomvcApp">
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted header-title">todos</h3>
+      </div>
+
+      <div ng-view></div>
+
+      <!-- build:js(app) scripts/vendor.js -->
+      <!-- bower:js -->
+      <script src="../bower_components/jquery/dist/jquery.js"></script>
+      <script src="../bower_components/es5-shim/es5-shim.js"></script>
+      <script src="../bower_components/angular/angular.js"></script>
+      <script src="../bower_components/json3/lib/json3.js"></script>
+      <script src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+      <script src="../bower_components/angular-animate/angular-animate.js"></script>
+      <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="../bower_components/angular-messages/angular-messages.js"></script>
+      <script src="../bower_components/angular-resource/angular-resource.js"></script>
+      <script src="../bower_components/angular-route/angular-route.js"></script>
+      <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="../bower_components/angular-touch/angular-touch.js"></script>
+      <script src="../bower_components/underscore/underscore.js"></script>
+      <script src="../bower_components/underscore.string/dist/underscore.string.js"></script>
+      <!-- endbower -->
+      <!-- endbuild -->
+
+      <!-- build:js({.tmp/serve,.tmp/partials,app}) scripts/app.js -->
+      <!-- inject:js -->
+      <!-- js files will be automaticaly insert here -->
+      <script src="scripts/app.js"></script>
+      <script src="scripts/config/route.js"></script>
+      <script src="scripts/config/run.js"></script>
+      <script src="scripts/models/todo.js"></script>
+      <script src="scripts/services/todoService.js"></script>
+      <script src="scripts/directives/ssTodoListInput.js"></script>
+      <script src="scripts/directives/ssTodoListItem.js"></script>
+      <script src="scripts/directives/ssTodoListFooter.js"></script>
+      <script src="scripts/directives/ssTodoList.js"></script>
+      <script src="scripts/controllers/todoCtrl.js"></script>
+      <!-- endinject -->
+
+      <!-- inject:partials -->
+      <!-- angular templates will be automatically converted in js and inserted here -->
+      <!-- endinject -->
+      <!-- endbuild -->
+    </div>
+
+  </body>
+</html>

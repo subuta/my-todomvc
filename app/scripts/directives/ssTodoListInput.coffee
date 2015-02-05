@@ -1,7 +1,7 @@
 angular.module('todomvcApp')
 # Todo追加のフォーム
 .directive('ssTodoListInput', ->
-  templateUrl: 'views/directives/ssTodoListInput.html'
+  templateUrl: '../../views/directives/ssTodoListInput.html'
   scope: {
     todos: '='
   },

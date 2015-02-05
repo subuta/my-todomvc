@@ -1,7 +1,7 @@
 angular.module('todomvcApp')
 # TodoListの一覧要素
 .directive('ssTodoListItem', ->
-  templateUrl: 'views/directives/ssTodoListItem.html'
+  templateUrl: '../../views/directives/ssTodoListItem.html'
   scope: {
     todosFilter: '=',
     todos: '='

@@ -20,7 +20,7 @@ angular.module('todomvcApp')
   )
   # TodoListの要素
   .directive('ssTodoList', ->
-    templateUrl: 'views/directives/ssTodoList.html'
+    templateUrl: '../../views/directives/ssTodoList.html'
     restrict: 'E',
     scope: true,
     replace: true

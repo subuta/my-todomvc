@@ -7,3 +7,7 @@ bower_components
 .tmp
 .idea
 test/evidence
+myTodoMVC.iml
+myTodoMVC.ipr
+myTodoMVC.iws
+dist
