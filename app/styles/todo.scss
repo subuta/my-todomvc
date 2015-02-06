@@ -1,46 +1,39 @@
 @charset "utf-8";
+@import "../../bower_components/compass-mixins/lib/compass/_css3.scss";
+@import "settings";
 @import "mixin/bar";
-
-// フッター部分
-.footer {
-  text-align: center;
-  color: #969696;
-  line-height: 30px;
-  padding-top: 50px;
-}
-
-// TODOのフォームのラッパー
-div.todo-form-wrapper {
-  width: 550px;
-  margin: 25px auto 30px auto;
-  box-shadow: 5px 12px 55px 25px rgba(0, 0, 0, 0.1);
-}
+@import "mixin/layout";
 
 // TODOのフォーム
 .todo-form-wrapper{
+  width: $todo_form_width;
+  margin: 25px auto 30px auto;
+  @include box-shadow(5px 11px 30px 20px rgba(0, 0, 0, 0.2));
+
   .todo-form {
-    background-color: white;
+    background-color: rgb(242, 242, 242);
+
     .leftbar {
       z-index: 99;
       height: 80px;
-      @include vertical_bar(red, 0.2);
+      @include vertical_bar($form_leftbar_color, 0.2);
     }
 
     .topbar {
       z-index: 100;
       height: 20px;
       border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-      @include horizontal_bar(#614545, 0.7);
+      @include horizontal_bar($form_topbar_color, 0.7);
     }
 
     // フォーム入力の下矢印アイコン
     img.todo-form-toggle-complete {
       margin: -10px 0 0 1px;
-      opacity: 0.5;
+      @include opacity(0.5);
 
       // フォーム入力の下矢印アイコン(全TODO完了時の表示)
       &.is-completed {
-        opacity: 1;
+        @include opacity(1);
       }
     }
 
@@ -49,7 +42,7 @@ div.todo-form-wrapper {
       margin: 10px 0 12px 15px;
       border: none;
       height: 38px;
-      color: #6F6F6F;
+      color: $main_text_color;
       font-size: 25px;
       width: 85%;
       outline: 0;
@@ -62,7 +55,7 @@ div.todo-form-wrapper {
 
     // Todo一覧
     .todo-list-item {
-      color: #6F6F6F;
+      color: $main_text_color;
 
       // todoの要素のチェックマーク
       span.todo-form-check {
@@ -80,7 +73,7 @@ div.todo-form-wrapper {
       .leftbar-short {
         z-index: 99;
         height: 50px;
-        @include vertical_bar(red, 0.2);
+        @include vertical_bar($form_leftbar_color, 0.2);
       }
 
       // todoの要素の削除ボタン
@@ -89,14 +82,12 @@ div.todo-form-wrapper {
         color: rgba(213, 69, 17, 0.7);
         margin: 0 12px 0 0;
         font-weight: bold;
-        -webkit-transition: all 0.1s linear;
-        -moz-transition: all 0.1s linear;
+        @include transition(all 0.1s linear);
 
         // todoの要素の削除ボタンのホバー表示
         &:hover {
-          -webkit-transform: scale(1.5);
-          -moz-transform: scale(1.5);
-          text-shadow: 0 0 5px red;
+          @include scale(1.5);
+          @include text-shadow(0 0 5px red);
         }
       }
 
@@ -109,42 +100,43 @@ div.todo-form-wrapper {
         font-size: 25px;
         width: 100%;
         outline: 0;
+
+        // todoのそれぞれの要素(完了済みの場合)
+        &.is-completed {
+          text-decoration: line-through;
+        }
       }
 
       // todoのそれぞれの要素の編集用InputBox
       input.todo-edit {
-        margin: -43px 0 0 42px;
-        width: 44%;
+        margin: -44px 0 0 42px;
+        width: 35%;
         position: absolute;
-        border-radius: 5px;
         border: 2px solid transparent;
-      }
+        font-size: 25px;
+        outline: 0;
+        @include border_radius(5px);
 
-      // todoのそれぞれの要素の編集用InputBoxのfocus時
-      input.todo-form-input:focus {
-        border: 2px solid rgba(0, 102, 255, 0.50);
+        // todoのそれぞれの要素の編集用InputBoxのfocus時
+        &:focus {
+          border: 2px solid rgba(0, 102, 255, 0.50);
+        }
       }
-
-      // todoのそれぞれの要素(完了済みの場合)
-      div.todo-list-task.is-completed {
-        text-decoration: line-through;
-      }
-
     }
 
     // todoの下部のフッター表示の装飾部分
     div.todo-footer-wrapper {
       background-color: #EAEAEA;
       height: 4px;
-      border-bottom: solid 1px #ccc;
-      width: 535px;
+      border-bottom: solid 1px #CCC;
+      width: $todo_form_width - 15;
       margin-left: 7px;
       position: absolute;
 
       // todoの下部のフッター表示
       div.todo-footer {
         background-color: #EAEAEA;
-        color: #717171;
+        color: $main_text_color;
         height: 30px;
         width: 98%;
         margin: 4px 0 0 5px;
@@ -166,22 +158,17 @@ div.todo-form-wrapper {
         button.btn-small {
           font-size: 11px;
           white-space: nowrap;
-          border-radius: 3px;
-          display: inline-block;
           margin-top: -3px;
-          font-weight: normal;
-          text-align: center;
           vertical-align: middle;
-          touch-action: manipulation;
-          cursor: pointer;
-          background-color: #bebebe;
-          border-style: solid;
-          border-color: #999 transparent transparent;
-          border-width: 1px;
+          background-color: #BEBEBE;
+
+          @include inline-block;
+          @include border_radius(3px);
+          @include colored_border(#999);
 
           // todoの下部のフッター表示内のボタンのホバー表示
           &:hover {
-            background-color: #b0b0b0;
+            background-color: #B0B0B0;
           }
         }
 
@@ -202,5 +189,18 @@ div.todo-form-wrapper {
         }
       }
     }
+  }
+}
+
+// フッター部分
+.footer {
+  text-align: center;
+  color: $thin_text_color;
+  line-height: 30px;
+
+  // フッター内のリンク
+  a {
+    color: $thin_text_color !important;
+    text-decoration: underline;
   }
 }

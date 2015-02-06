@@ -3,11 +3,22 @@ $orientaion: "top", "right", "bottom", "left";
 // 幅
 $spaces: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50;
 
-// マージン関連のスタイルを定義
+// マージン・パディング関連のスタイルを定義
 @each $o in $orientaion {
   @each $s in $spaces {
     .margin-#{$o}-#{$s} {
       margin-#{$o}: #{$s}px !important;
     }
   }
+
+  @each $s in $spaces {
+    .padding-#{$o}-#{$s} {
+      padding-#{$o}: #{$s}px !important;
+    }
+  }
+}
+
+// 背景色が透明なスタイル
+.bg-transparent {
+  background-color: transparent;
 }

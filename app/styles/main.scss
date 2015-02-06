@@ -3,51 +3,46 @@
 $icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "../../bower_components/compass-mixins/lib/compass/_css3.scss";
+@import "settings";
 @import "common";
+@import "mixin/layout";
 // endbower
 
 // レガシーブラウザ向けの表示
 .browsehappy {
   margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
+  background: $body_bg_color;
+  color: $text_color;
   padding: 0.2em 0;
 }
 
 // html要素
 html {
   // 相対指定するための、高さ指定
-  height: 100%;
+  @include maxmize_hw();
 }
 
 // body要素
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #EAEAEA !important;
-  // 相対指定するための、高さ指定
-  height: 100%;
-  width: 100%;
+  padding: 20px 0;
+  background-color: $body_bg_color !important;
+  @include maxmize_hw();
 }
 
 // 全体の要素のコンテナ
 .container {
-  // 相対指定するための、高さ指定
-  height: 100%;
-  width: 100%;
+  @include maxmize_hw();
 }
 
 // ngView要素のコンテナ
 .ng-view-container {
-  // 相対指定するための、高さ指定
-  height: 100%;
-  width: 100%;
+  @include maxmize_hw();
 }
 
 // ヘッダー部分のタイトル表示(todos)
 .header-title {
   text-align: center;
-  font-size: 60px;
-  color: #BEBEBE;
-  text-shadow: #EFEFEF 1px 1px 0px, #EFEFEF -1px 1px 0px, #EFEFEF 1px -1px 0px, #EFEFEF -1px -1px 0px
+  font-size: 70px;
+  @include edged_color(#BEBEBE, #EFEFEF);
 }

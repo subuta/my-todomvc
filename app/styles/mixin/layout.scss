@@ -1,0 +1,20 @@
+@import "../../../bower_components/compass-mixins/lib/compass/_css3.scss";
+
+// 相対指定するための、幅・高さ指定
+@mixin maxmize_hw() {
+  height: 100%;
+  width: 100%;
+}
+
+// 縁取り有りの色指定
+@mixin edged_color($color, $edge_color) {
+  color: $color;
+  @include text-shadow($edge_color 1px 1px 0, $edge_color -1px 1px 0, $edge_color 1px -1px 0, $edge_color -1px -1px 0)
+}
+
+// 四隅の色指定可能な線
+@mixin colored_border($top: transparent, $right: transparent, $bottom: transparent, $left: transparent) {
+  border-style: solid;
+  border-color: $top $right $bottom $left;
+  border-width: 1px;
+}
