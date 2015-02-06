@@ -5,7 +5,7 @@
  # @name todomvcApp.controller:TodoCtrl
  # @description
  # # TodoCtrl
- # Controller of the Todoページ用のコントローラ
+ # Todoページ用のコントローラ
 ###
 angular.module('todomvcApp')
   .controller 'TodoCtrl', ($scope, $filter, _, s, Todo, TodoRepository) ->
@@ -14,6 +14,8 @@ angular.module('todomvcApp')
 
     vm.taskName = ""
     vm.todosFilter = ""
+    # blurを発生させるイベント名
+    vm.blurEvent = 'forceBlur'
 
     # todoの一覧を取得
     vm.todos = TodoRepository.gets()
@@ -77,6 +79,7 @@ angular.module('todomvcApp')
       switch keyCode
         when 13
           vm.createTodo(vm.taskName)
+          $scope.$broadcast('forceBlur')
         when 27
           vm.taskName = ""
 

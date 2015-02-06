@@ -7,8 +7,8 @@ div ng-controller="TodoCtrl as vm"
     .todo-form
       .leftbar.margin-left-30
       .topbar
-      img.todo-form-toggle-complete ng-class="{'is-completed': vm.isAllCompleted()}" ng-click="vm.toggleAllCompleted()" ng-show="vm.todos.length > 0" src="images/down-arrow.png"
-      input.todo-input ng-class="{'is-blank': vm.isBlank(vm.taskName),'margin-left-45': vm.isEmpty() }" ng-keyup="vm.onInputFormKeyPress($event.keyCode)" ng-model="vm.taskName" placeholder="What needs to be done?"
+      img.todo-form-toggle-complete.bg-transparent ng-class="{'is-completed': vm.isAllCompleted()}" ng-click="vm.toggleAllCompleted()" ng-show="vm.todos.length > 0" src="images/down-arrow.png"
+      input.todo-input.bg-transparent ng-class="{'is-blank': vm.isBlank(vm.taskName),'margin-left-45': vm.isEmpty() }" ng-keyup="vm.onInputFormKeyPress($event.keyCode)" ng-model="vm.taskName" placeholder="What needs to be done?" blur-on-event="{{vm.blurEvent}}"
 
       .todo-list-item ng-mouseleave="vm.hoverOut(todo)" ng-mouseover="vm.hoverIn(todo)" ng-repeat=("todo in vm.todos | filter:vm.getFilterObject()")
         span.todo-form-check ng-class=("{'is-completed': todo.isCompleted}") ng-click="vm.toggleCompleted(todo)" ✓
@@ -21,11 +21,10 @@ div ng-controller="TodoCtrl as vm"
           div ng-switch-when="false"
             .todo-list-task ng-bind="todo.taskName" ng-class=("{'is-completed': todo.isCompleted}") ng-dblclick="vm.editTodo(todo)"
 
-      .todo-footer-wrapper
+      .todo-footer-wrapper ng-show="vm.todos.length > 0"
         .todo-footer
           span.footer-left
-            b
-            | {{vm.getNotCompleted().length}} items left
+            | <b>{{vm.getNotCompleted().length}}</b> items left
           span.footer-right
             button.btn-small ng-click="vm.clearCompleted()" ng-show="vm.getCompleted().length > 0" Clear completed ({{vm.getCompleted().length}})
           .todo-form-filters
@@ -33,9 +32,9 @@ div ng-controller="TodoCtrl as vm"
             span#todo-form-filter-active ng-class=("{'is-selected': vm.todosFilter === 'notCompleted'}") ng-click=("vm.setFilter('notCompleted')") Active
             span#todo-form-filter-completed ng-class=("{'is-selected': vm.todosFilter === 'completed'}") ng-click=("vm.setFilter('completed')") Completed
 
-  .footer
+  .footer ng-class="{'padding-top-35': vm.todos.length > 0}"
     p
       small
         | Double-click to edit a todo - Escape to cancel <br>
-        | Written by Shunta Saito <br>
-        | Part of AngularJS Framework
+        | Written by <a href="https://github.com/subuta" target="_blank">Shunta Saito</a> <br>
+        | Part of <a href="https://angularjs.org/" target="_blank">AngularJS Framework</a>

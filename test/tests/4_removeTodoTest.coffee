@@ -1,4 +1,4 @@
-casper.test.begin("TODOの削除テスト", 8, (test) ->
+casper.test.begin("TODOの削除テスト", 9, (test) ->
 
   # ページの表示内容のチェック
   casper.start(casper.global.targetUrl, () ->
@@ -30,6 +30,7 @@ casper.test.begin("TODOの削除テスト", 8, (test) ->
     @waitWhileVisible('.todo-footer-wrapper .todo-footer .footer-right .btn-small', () ->
       test.assertNotVisible('.todo-footer-wrapper .todo-footer .footer-right .btn-small', '\'Clear completed\'ボタンが非表示となっていること')
       test.assertSelectorHasText('.todo-footer .footer-left', '0 items left', 'アイテム数の表示が0となっていること')
+      test.assertNotVisible('.todo-footer','０件の場合はフッターが非表示となっていること')
     )
   )
 
