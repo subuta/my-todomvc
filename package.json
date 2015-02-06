@@ -48,6 +48,7 @@
   },
   "scripts": {
     "test": "casperjs test test/tests/*.coffee --pre=test/helper/pre.coffee --includes=test/helper/inc.coffee --post=test/helper/post.coffee",
-    "test-watch": "nodemon --watch test/tests --watch app/scripts --watch app/views -e coffee,html --exec \"casperjs test test/tests/*.coffee --pre=test/helper/pre.coffee --includes=test/helper/inc.coffee --post=test/helper/post.coffee --verbose\""
+    "test-watch": "nodemon --watch test/tests --watch app/scripts --watch app/views -e coffee,html --exec \"casperjs test test/tests/*.coffee --pre=test/helper/pre.coffee --includes=test/helper/inc.coffee --post=test/helper/post.coffee --verbose\"",
+    "test-watch-debug": "nodemon --watch test/tests --watch app/scripts --watch app/views -e coffee,html --exec \"casperjs test test/tests/*.coffee --pre=test/helper/pre.coffee --includes=test/helper/inc.coffee --post=test/helper/post.coffee --verbose --log-level=debug\""
   }
 }

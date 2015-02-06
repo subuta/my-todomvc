@@ -27,9 +27,9 @@ div ng-controller="TodoCtrl as vm"
           span.footer-right
             button.btn-small ng-click="vm.clearCompleted()" ng-show="vm.getCompleted().length > 0" Clear completed ({{vm.getCompleted().length}})
           .todo-form-filters
-            span#todo-form-filter-all ng-class=("{'is-selected': vm.todosFilter === ''}") ng-click=("vm.setFilter('')")  All
-            span#todo-form-filter-active ng-class=("{'is-selected': vm.todosFilter === 'notCompleted'}") ng-click=("vm.setFilter('notCompleted')")  Active
-            span#todo-form-filter-completed ng-class=("{'is-selected': vm.todosFilter === 'completed'}") ng-click=("vm.setFilter('completed')")  Completed
+            span#todo-form-filter-all ng-class=("{'is-selected': vm.todosFilter === ''}") ng-click=("vm.setFilter('')") All
+            span#todo-form-filter-active ng-class=("{'is-selected': vm.todosFilter === 'notCompleted'}") ng-click=("vm.setFilter('notCompleted')") Active
+            span#todo-form-filter-completed ng-class=("{'is-selected': vm.todosFilter === 'completed'}") ng-click=("vm.setFilter('completed')") Completed
 
   .footer
     p
