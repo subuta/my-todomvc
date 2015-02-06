@@ -11,3 +11,4 @@ myTodoMVC.iml
 myTodoMVC.ipr
 myTodoMVC.iws
 dist
+npm-debug.log

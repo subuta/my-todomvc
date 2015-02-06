@@ -8,7 +8,7 @@
  # Controller of the Todoページ用のコントローラ
 ###
 angular.module('todomvcApp')
-  .controller 'TodoCtrl', ($scope, $filter, _, s, Todo) ->
+  .controller 'TodoCtrl', ($scope, $filter, _, s, Todo, TodoRepository) ->
     # thisをVM(ViewModel)として定義
     vm = @
 
@@ -16,15 +16,17 @@ angular.module('todomvcApp')
     vm.todosFilter = ""
 
     # todoの一覧を取得
-    vm.todos = Todo.gets()
+    vm.todos = TodoRepository.gets()
 
     # 完了済みのTodoを取得するメソッド
     vm.getCompleted = ->
       $filter('filter')(vm.todos, {isCompleted: true})
+
     # Todoがすべて完了済みかどうかを取得するメソッド
     vm.isAllCompleted = ->
       _.every vm.todos, (todo) ->
         todo.isCompleted
+
     # Todoをすべて完了済みとするメソッド
     vm.asAllCompleted = ->
       vm.todos = _.map vm.todos, (todo) ->
@@ -54,10 +56,10 @@ angular.module('todomvcApp')
     vm.clearCompleted = ->
       # 完了済み(isCompleted = true)を除いたコレクションを返却する。
       _.each(vm.todos, (todo) ->
-        todo.delete() if todo.isCompleted
+        TodoRepository.delete(todo) if todo.isCompleted
       )
       # todoの一覧を取得
-      vm.todos = Todo.gets()
+      vm.todos = TodoRepository.gets()
 
     # taskNameを初期化
     vm.taskName = ""
@@ -68,11 +70,9 @@ angular.module('todomvcApp')
     # Todoを追加するメソッド
     vm.createTodo = (taskName = "") ->
       unless s.isBlank(taskName)
-        #todoService.addTodo(taskName)
-        todo = new Todo(taskName)
-        todo.save()
+        TodoRepository.create(new Todo(taskName))
         # todoの一覧を取得
-        vm.todos = Todo.gets()
+        vm.todos = TodoRepository.gets()
         vm.taskName = ""
 
     # キーボードが押下された場合のハンドラ
@@ -91,8 +91,12 @@ angular.module('todomvcApp')
     vm.hoverOut = (todo) ->
       todo.hover = false
 
+    # 現在のFilterをセットするメソッド
+    vm.setFilter = (filter) ->
+      vm.todosFilter = filter
+
     # 現在のFilterを取得するメソッド
-    vm.getFilter = () ->
+    vm.getFilterObject = ->
       filter = {}
       switch vm.todosFilter
         when 'completed'
@@ -106,16 +110,16 @@ angular.module('todomvcApp')
       if keyCode and todo
         switch keyCode
           when 13
-            todo.save()
-            vm.endEdit(todo)
+            TodoRepository.save(todo)
+            vm.endEditTodo(todo)
           when 27
             todo.taskName = todo.tempTask
-            vm.endEdit(todo)
+            vm.endEditTodo(todo)
 
     vm.onTodoRemoveClicked = (todo) ->
-      todo.delete()
+      TodoRepository.delete(todo)
       # todoの一覧を取得
-      vm.todos = Todo.gets()
+      vm.todos = TodoRepository.gets()
 
     # completedをセットする。
     vm.setCompleted = (todo, isCompleted) ->
@@ -126,10 +130,10 @@ angular.module('todomvcApp')
       todo.isCompleted = !todo.isCompleted
 
     # Todoを編集状態にする。
-    vm.edit = (todo) ->
-      todo.editable = true
+    vm.editTodo = (todo) ->
+      todo._editable = true
       todo.tempTask = todo.taskName
 
     # Todoの編集状態を終了する。
-    vm.endEdit = (todo) ->
-      todo.editable = false
+    vm.endEditTodo = (todo) ->
+      todo._editable = false
