@@ -9,7 +9,7 @@ casper.test.begin("TODOのフィルタ表示テスト", 9, (test) ->
     @addTodo('Go to buy a MacBook Pro')
     @addTodo('Go to buy a Mac Mini')
     test.assertElementCount('.todo-list-item', 3,'３つのTODOタスクが表示されていること')
-    test.assertSelectorHasText('.todo-form-footer .footer-left', '3 items left', 'アイテム数の表示が３となっていること')
+    test.assertSelectorHasText('.todo-footer .footer-left', '3 items left', 'アイテム数の表示が３となっていること')
     test.assertSelectorHasText('#todo-form-filter-all.is-selected', 'All', 'Allフィルタが選択されていること')
   )
   
@@ -18,16 +18,16 @@ casper.test.begin("TODOのフィルタ表示テスト", 9, (test) ->
     @mouse.click('.todo-list-item .todo-form-check')
 
     test.assertElementCount('.todo-list-item', 3,'３つのTODOタスクが表示されていること')
-    test.assertSelectorHasText('.todo-form-footer .footer-left', '2 items left', 'アイテム数の表示が２となっていること')
+    test.assertSelectorHasText('.todo-footer .footer-left', '2 items left', 'アイテム数の表示が２となっていること')
   )
 
   casper.then( () ->
     test.info("フィルタをActiveとしたら")
     @clickLabel('Active', 'span')
 
-    @waitForSelector('#todo-form-filter-active', () ->
+    @waitForSelector('#todo-form-filter-active.is-selected', () ->
       test.assertElementCount('.todo-list-item', 2,'２つのTODOタスクが表示されていること')
-      test.assertSelectorHasText('.todo-form-footer .footer-left', '2 items left', 'アイテム数の表示が２となっていること')
+      test.assertSelectorHasText('.todo-footer .footer-left', '2 items left', 'アイテム数の表示が２となっていること')
     )
   )
 
@@ -37,7 +37,7 @@ casper.test.begin("TODOのフィルタ表示テスト", 9, (test) ->
 
     @waitForSelector('#todo-form-filter-completed.is-selected', () ->
       test.assertElementCount('.todo-list-item', 1,'１つのTODOタスクが表示されていること')
-      test.assertSelectorHasText('.todo-form-footer .footer-left', '2 items left', 'アイテム数の表示が２となっていること')
+      test.assertSelectorHasText('.todo-footer .footer-left', '2 items left', 'アイテム数の表示が２となっていること')
     )
   )
 

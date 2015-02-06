@@ -13,7 +13,7 @@ casper.test.begin("TODOの削除テスト", 8, (test) ->
       test.assertElementCount('.todo-list-item', 1,'ひとつのTODOタスクが表示されていること')
       test.assertSelectorHasText('.todo-list-item .todo-list-task', 'Go to buy a iMac','TODOタスクの中身が表示されていること')
       test.assertNotVisible('.todo-list-item .todo-form-remove', '削除マークが表示されていないこと')
-      test.assertSelectorHasText('.todo-form-footer .footer-left', '1 items left', 'アイテム数の表示が1となっていること')
+      test.assertSelectorHasText('.todo-footer .footer-left', '1 items left', 'アイテム数の表示が1となっていること')
     )
   )
 
@@ -22,14 +22,14 @@ casper.test.begin("TODOの削除テスト", 8, (test) ->
     @mouse.click('.todo-list-item .todo-form-check')
 
     test.info("タスクを削除したら")
-    @waitForSelector('.todo-form-footer-wrapper .todo-form-footer .footer-right .btn-small', () ->
+    @waitForSelector('.todo-footer-wrapper .todo-footer .footer-right .btn-small', () ->
       @evaluate(() ->
-        document.querySelector('.todo-form-footer-wrapper .todo-form-footer .footer-right .btn-small').click()
+        document.querySelector('.todo-footer-wrapper .todo-footer .footer-right .btn-small').click()
       )
     )
-    @waitWhileVisible('.todo-form-footer-wrapper .todo-form-footer .footer-right .btn-small', () ->
-      test.assertNotVisible('.todo-form-footer-wrapper .todo-form-footer .footer-right .btn-small', '\'Clear completed\'ボタンが非表示となっていること')
-      test.assertSelectorHasText('.todo-form-footer .footer-left', '0 items left', 'アイテム数の表示が0となっていること')
+    @waitWhileVisible('.todo-footer-wrapper .todo-footer .footer-right .btn-small', () ->
+      test.assertNotVisible('.todo-footer-wrapper .todo-footer .footer-right .btn-small', '\'Clear completed\'ボタンが非表示となっていること')
+      test.assertSelectorHasText('.todo-footer .footer-left', '0 items left', 'アイテム数の表示が0となっていること')
     )
   )
 

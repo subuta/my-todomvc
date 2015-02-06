@@ -1,13 +1,13 @@
 // 方角
-$orientaion = "top", "right", "bottom", "left"
-//
-$spaces = 0, 5, 10, 15, 20, 25, 30
+$orientaion: "top", "right", "bottom", "left";
+// 幅
+$spaces: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50;
 
-// マージン関連のMIXINを定義
+// マージン関連のスタイルを定義
 @each $o in $orientaion {
   @each $s in $spaces {
     .margin-#{$o}-#{$s} {
-      margin-#{$o}-#{$s}: #{$s}px !important;
+      margin-#{$o}: #{$s}px !important;
     }
   }
 }

@@ -1,0 +1,17 @@
+// 横のバー
+@mixin horizontal_bar($color, $opacity) {
+  background-color: $color;
+  position: relative;
+  display: block;
+  opacity: $opacity;
+}
+
+// 縦のバー
+@mixin vertical_bar($color, $opacity) {
+  border-left: 1px solid $color;
+  border-right: 1px solid $color;
+  position: absolute;
+  width: 4px;
+  display: block;
+  opacity: $opacity;
+}

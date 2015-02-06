@@ -1,3 +1,6 @@
+@charset "utf-8";
+@import "mixin/bar";
+
 // フッター部分
 .footer {
   text-align: center;
@@ -14,207 +17,190 @@ div.todo-form-wrapper {
 }
 
 // TODOのフォーム
-div.todo-form {
-  background-color: white;
-
-  // TODOのフォーム上部のバー表示
-  div.todo-form-topbar {
-    height: 20px;
-    background-color: #614545;
-    position: relative;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-    opacity: 0.7;
-    z-index: 100;
-  }
-
-  // TODOのフォーム左部のバー表示
-  div.todo-form-leftbar {
-    border-left: 1px solid red;
-    border-right: 1px solid red;
-    margin-left: 30px;
-    position: absolute;
-    height: 80px;
-    width: 4px;
-    opacity: 0.2;
-    z-index: 99;
-  }
-
-  // フォーム入力
-  input.todo-form-input {
-    margin: 10px 0 12px 15px;
-    border: none;
-    height: 38px;
-    color: #6F6F6F;
-    font-size: 25px;
-    width: 85%;
-    outline: 0;
-  }
-
-  // フォーム入力(下矢印アイコンが非表示の場合)
-  input.todo-form-input.left-spaced {
-    margin-left: 45px;
-  }
-
-  // フォーム入力の下矢印アイコン
-  img.todo-form-toggle-complete {
-    margin: -10px 0 0 1px;
-    opacity: 0.5;
-  }
-
-  // フォーム入力の下矢印アイコン(全TODO完了時の表示)
-  img.todo-form-toggle-complete.is-completed {
-    opacity: 1;
-  }
-
-  // フォーム入力が空の場合
-  input.todo-form-input.is-blank {
-    font-style: italic;
-  }
-
-  // Todo一覧
-  div.todo-list-item {
-    color: #6F6F6F;
-
-    // todoの要素のチェックマーク
-    span.todo-form-check {
-      position: absolute;
-      font-size: 30px;
-      margin-top: 6px;
-    }
-
-    // todoの要素のチェックマーク(完了済みの場合)
-    span.todo-form-check.is-completed {
-      color: rgba(0, 128, 0, 0.5);
-    }
-
-    // todoの要素の削除ボタン
-    span.todo-form-remove {
-      font-size: 30px;
-      color: rgba(213, 69, 17, 0.7);
-      margin: 0 12px 0 0;
-      font-weight: bold;
-      -webkit-transition: all 0.1s linear;
-      -moz-transition: all 0.1s linear;
-    }
-
-    // todoの要素の削除ボタンのホバー表示
-    span.todo-form-remove:hover {
-      -webkit-transform: scale( 1.5 );
-      -moz-transform: scale( 1.5 );
-      text-shadow: 0 0 5px red;
-    }
-
-    // todoのそれぞれの要素向けの左部のバー表示
-    div.todo-form-leftbar-short {
-      border-left: 1px solid red;
-      border-right: 1px solid red;
-      margin-left: 30px;
-      position: absolute;
-      height: 50px;
-      width: 4px;
-      opacity: 0.2;
+.todo-form-wrapper{
+  .todo-form {
+    background-color: white;
+    .leftbar {
       z-index: 99;
+      height: 80px;
+      @include vertical_bar(red, 0.2);
     }
 
-    // todoのそれぞれの要素
-    div.todo-list-task {
-      background-color: white;
-      padding: 8px 0 0 45px;
-      border-top: 1px dotted rgba(0, 0, 0, 0.2);
-      height: 50px;
+    .topbar {
+      z-index: 100;
+      height: 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+      @include horizontal_bar(#614545, 0.7);
+    }
+
+    // フォーム入力の下矢印アイコン
+    img.todo-form-toggle-complete {
+      margin: -10px 0 0 1px;
+      opacity: 0.5;
+
+      // フォーム入力の下矢印アイコン(全TODO完了時の表示)
+      &.is-completed {
+        opacity: 1;
+      }
+    }
+
+    // フォーム入力
+    input.todo-input {
+      margin: 10px 0 12px 15px;
+      border: none;
+      height: 38px;
+      color: #6F6F6F;
       font-size: 25px;
-      width: 100%;
+      width: 85%;
       outline: 0;
+
+      // フォーム入力が空の場合
+      &.is-blank {
+        font-style: italic;
+      }
     }
 
-    // todoのそれぞれの要素の編集用InputBox
-    input.todo-form-input {
-      margin: -43px 0 0 42px;
-      width: 44%;
-      position: absolute;
-      border-radius: 5px;
-      border: 2px solid transparent;
+    // Todo一覧
+    .todo-list-item {
+      color: #6F6F6F;
+
+      // todoの要素のチェックマーク
+      span.todo-form-check {
+        position: absolute;
+        font-size: 30px;
+        margin-top: 6px;
+
+        // todoの要素のチェックマーク(完了済みの場合)
+        &.is-completed {
+          color: rgba(0, 128, 0, 0.5);
+        }
+      }
+
+      // todoのそれぞれの要素向けの左部のバー表示
+      .leftbar-short {
+        z-index: 99;
+        height: 50px;
+        @include vertical_bar(red, 0.2);
+      }
+
+      // todoの要素の削除ボタン
+      span.todo-form-remove {
+        font-size: 30px;
+        color: rgba(213, 69, 17, 0.7);
+        margin: 0 12px 0 0;
+        font-weight: bold;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+
+        // todoの要素の削除ボタンのホバー表示
+        &:hover {
+          -webkit-transform: scale(1.5);
+          -moz-transform: scale(1.5);
+          text-shadow: 0 0 5px red;
+        }
+      }
+
+      // todoのそれぞれの要素
+      .todo-list-task {
+        background-color: white;
+        padding: 8px 0 0 45px;
+        border-top: 1px dotted rgba(0, 0, 0, 0.2);
+        height: 50px;
+        font-size: 25px;
+        width: 100%;
+        outline: 0;
+      }
+
+      // todoのそれぞれの要素の編集用InputBox
+      input.todo-edit {
+        margin: -43px 0 0 42px;
+        width: 44%;
+        position: absolute;
+        border-radius: 5px;
+        border: 2px solid transparent;
+      }
+
+      // todoのそれぞれの要素の編集用InputBoxのfocus時
+      input.todo-form-input:focus {
+        border: 2px solid rgba(0, 102, 255, 0.50);
+      }
+
+      // todoのそれぞれの要素(完了済みの場合)
+      div.todo-list-task.is-completed {
+        text-decoration: line-through;
+      }
+
     }
 
-    // todoのそれぞれの要素の編集用InputBoxのfocus時
-    input.todo-form-input:focus {
-      border: 2px solid rgba(0, 102, 255, 0.50);
-    }
-
-    // todoのそれぞれの要素(完了済みの場合)
-    div.todo-list-task.is-completed {
-      text-decoration: line-through;
-    }
-  }
-
-  // todoの下部のフッター表示の装飾部分
-  div.todo-form-footer-wrapper {
-    background-color: #EAEAEA;
-    height: 4px;
-    border-bottom: solid 1px #ccc;
-    width: 535px;
-    margin-left: 7px;
-    position: absolute;
-
-    // todoの下部のフッター表示
-    div.todo-form-footer {
+    // todoの下部のフッター表示の装飾部分
+    div.todo-footer-wrapper {
       background-color: #EAEAEA;
-      color: #717171;
-      height: 30px;
-      width: 98%;
-      margin: 4px 0 0 5px;
+      height: 4px;
+      border-bottom: solid 1px #ccc;
+      width: 535px;
+      margin-left: 7px;
       position: absolute;
-      padding: 5px 10px 0 10px;
 
-      // todoの下部のフッターの表示位置の修正用スタイル
-      span.footer-left {
+      // todoの下部のフッター表示
+      div.todo-footer {
+        background-color: #EAEAEA;
+        color: #717171;
+        height: 30px;
+        width: 98%;
+        margin: 4px 0 0 5px;
         position: absolute;
-        left: 10px;
-      }
+        padding: 5px 10px 0 10px;
 
-      span.footer-right {
-        position: absolute;
-        right: 10px;
-      }
-
-      // todoの下部のフッター表示内のボタン
-      button.btn-small {
-        font-size: 11px;
-        white-space: nowrap;
-        border-radius: 3px;
-        display: inline-block;
-        margin-top: -3px;
-        font-weight: normal;
-        text-align: center;
-        vertical-align: middle;
-        touch-action: manipulation;
-        cursor: pointer;
-        background-color: #bebebe;
-        border-style: solid;
-        border-color: #999 transparent transparent;
-        border-width: 1px;
-      }
-
-      // todoの下部のフッター表示内のボタンのホバー表示
-      button.btn-small:hover {
-        background-color: #b0b0b0;
-      }
-
-      // todoの下部のフッター表示内のフィルタの表示
-      div.todo-form-filters {
-        text-align: center;
-
-        // 要素の表示間隔を広げる。
-        span {
-          padding-left: 5px;
+        // todoの下部のフッターの表示位置の修正用スタイル
+        span.footer-left {
+          position: absolute;
+          left: 10px;
         }
 
-        // 選択されている要素
-        span.is-selected {
-          font-weight: bold;
+        span.footer-right {
+          position: absolute;
+          right: 10px;
+        }
+
+        // todoの下部のフッター表示内のボタン
+        button.btn-small {
+          font-size: 11px;
+          white-space: nowrap;
+          border-radius: 3px;
+          display: inline-block;
+          margin-top: -3px;
+          font-weight: normal;
+          text-align: center;
+          vertical-align: middle;
+          touch-action: manipulation;
+          cursor: pointer;
+          background-color: #bebebe;
+          border-style: solid;
+          border-color: #999 transparent transparent;
+          border-width: 1px;
+
+          // todoの下部のフッター表示内のボタンのホバー表示
+          &:hover {
+            background-color: #b0b0b0;
+          }
+        }
+
+        // todoの下部のフッター表示内のフィルタの表示
+        div.todo-form-filters {
+          text-align: center;
+
+          // 要素の表示間隔を広げる。
+          span {
+            padding-left: 5px;
+
+            // 選択されている要素
+            &.is-selected {
+              font-weight: bold;
+            }
+          }
+
         }
       }
     }
   }
-
 }

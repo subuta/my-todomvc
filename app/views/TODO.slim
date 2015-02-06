@@ -1,26 +1,28 @@
 div ng-controller="TodoCtrl as vm"
 
+  .todo-header
+    h3 class="text-muted header-title" todos
+
   .todo-form-wrapper
     .todo-form
-      .todo-form-input-wrapper
-        .todo-form-leftbar
-        .todo-form-topbar
-        image.todo-form-toggle-complete ng-class="{'is-completed': vm.isAllCompleted()}" ng-click="vm.toggleAllCompleted()" ng-show="vm.todos.length > 0" src="images/down-arrow.png"
-        input.todo-form-input ng-class="{'is-blank': vm.isBlank(vm.taskName),'left-spaced': vm.isEmpty() }" ng-keyup="vm.onInputFormKeyPress($event.keyCode)" ng-model="vm.taskName" placeholder="What needs to be done?"
+      .leftbar.margin-left-30
+      .topbar
+      img.todo-form-toggle-complete ng-class="{'is-completed': vm.isAllCompleted()}" ng-click="vm.toggleAllCompleted()" ng-show="vm.todos.length > 0" src="images/down-arrow.png"
+      input.todo-input ng-class="{'is-blank': vm.isBlank(vm.taskName),'margin-left-45': vm.isEmpty() }" ng-keyup="vm.onInputFormKeyPress($event.keyCode)" ng-model="vm.taskName" placeholder="What needs to be done?"
 
       .todo-list-item ng-mouseleave="vm.hoverOut(todo)" ng-mouseover="vm.hoverIn(todo)" ng-repeat=("todo in vm.todos | filter:vm.getFilterObject()")
-        span.todo-form-check ng-class=("{'is-completed': todo.isCompleted}") ng-click="vm.toggleCompleted(todo)"  ✓
-        .todo-form-leftbar-short
-        span.todo-form-remove.pull-right ng-click="vm.onTodoRemoveClicked(todo)" ng-show="todo.hover"  ×
+        span.todo-form-check ng-class=("{'is-completed': todo.isCompleted}") ng-click="vm.toggleCompleted(todo)" ✓
+        .leftbar-short.margin-left-30
+        span.todo-form-remove.pull-right ng-click="vm.onTodoRemoveClicked(todo)" ng-show="todo.hover" ×
         div ng-switch="todo._editable"
           div ng-switch-when="true"
             .todo-list-task ng-bind="" ng-class=("{'is-completed': todo.isCompleted}")
-            input.todo-form-input ng-keyup="vm.onEditorKeyPress($event.keyCode, todo)" ng-model="todo.taskName"
+            input.todo-edit ng-keyup="vm.onEditorKeyPress($event.keyCode, todo)" ng-model="todo.taskName"
           div ng-switch-when="false"
             .todo-list-task ng-bind="todo.taskName" ng-class=("{'is-completed': todo.isCompleted}") ng-dblclick="vm.editTodo(todo)"
 
-      .todo-form-footer-wrapper
-        .todo-form-footer
+      .todo-footer-wrapper
+        .todo-footer
           span.footer-left
             b
             | {{vm.getNotCompleted().length}} items left

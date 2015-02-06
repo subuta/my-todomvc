@@ -14,7 +14,7 @@ casper.test.begin("TODOの追加テスト", 7, (test) ->
       test.assertElementCount('.todo-list-item', 1,'ひとつのTODOタスクが表示されていること')
       test.assertSelectorHasText('.todo-list-item .todo-list-task', 'Go to buy a iMac','TODOタスクの中身が表示されていること')
       test.assertNotVisible('.todo-list-item .todo-form-remove', '削除マークが表示されていないこと')
-      test.assertSelectorHasText('.todo-form-footer .footer-left', '1 items left', 'アイテム数の表示が1となっていること')
+      test.assertSelectorHasText('.todo-footer .footer-left', '1 items left', 'アイテム数の表示が1となっていること')
     )
   );
 

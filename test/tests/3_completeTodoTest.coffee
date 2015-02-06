@@ -15,9 +15,9 @@ casper.test.begin("TODOの完了表示テスト", 8, (test) ->
     @waitForSelector('.todo-list-item .todo-form-check.is-completed', () ->
       test.assertExists('.todo-list-item .todo-form-check.is-completed', 'チェックマークが完了済みの表示になっていること')
       test.assertExists('.todo-list-item .todo-list-task.is-completed', 'タスクが完了済みの表示になっていること')
-      test.assertSelectorHasText('.todo-form-footer .footer-left', '0 items left', 'アイテム数の表示が0となっていること')
-      test.assertVisible('.todo-form-footer-wrapper .todo-form-footer .footer-right .btn-small', '\'Clear completed\'ボタンが表示されていること')
-      test.assertSelectorHasText('.todo-form-footer-wrapper .todo-form-footer .footer-right .btn-small', 'Clear completed (1)', 'Clear completedボタンに(1)表示が付いていること')
+      test.assertSelectorHasText('.todo-footer .footer-left', '0 items left', 'アイテム数の表示が0となっていること')
+      test.assertVisible('.todo-footer-wrapper .todo-footer .footer-right .btn-small', '\'Clear completed\'ボタンが表示されていること')
+      test.assertSelectorHasText('.todo-footer-wrapper .todo-footer .footer-right .btn-small', 'Clear completed (1)', 'Clear completedボタンに(1)表示が付いていること')
     )
   )
 
