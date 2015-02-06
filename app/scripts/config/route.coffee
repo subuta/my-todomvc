@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 ###
  * @ngdoc overview
@@ -16,6 +16,6 @@ angular.module('todomvcApp')
         templateUrl: '../../views/todo.html'
       })
       .otherwise({
-          redirectTo: '/angular-todo'
-        });
+        redirectTo: '/angular-todo'
+      });
   )

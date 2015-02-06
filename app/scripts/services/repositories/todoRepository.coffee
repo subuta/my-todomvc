@@ -22,7 +22,7 @@ angular.module('todomvcApp').factory('TodoRepository', (BaseRepository, Todo) ->
       angular.noop(todo)
 
     delete: (todo) ->
-      @todos = _.reject @todos, (_todo) =>
+      @todos = _.reject @todos, (_todo) ->
         _todo.id == todo.id
 
     _setAndIncrementId: (todo) ->
@@ -32,7 +32,7 @@ angular.module('todomvcApp').factory('TodoRepository', (BaseRepository, Todo) ->
     get: (id) ->
       return @todos[id]
 
-    gets: () ->
+    gets: ->
       return @todos
 
   return new TodoRepository()
