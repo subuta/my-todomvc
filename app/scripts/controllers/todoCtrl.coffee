@@ -12,7 +12,7 @@ angular.module('todomvcApp')
     # thisをVM(ViewModel)として定義
     vm = @
 
-    # フィルタの初期状態を空にしておく。
+    vm.taskName = ""
     vm.todosFilter = ""
 
     # todoの一覧を取得
@@ -60,9 +60,6 @@ angular.module('todomvcApp')
       )
       # todoの一覧を取得
       vm.todos = TodoRepository.gets()
-
-    # taskNameを初期化
-    vm.taskName = ""
 
     vm.isBlank = (taskName) ->
       s.isBlank(taskName)
